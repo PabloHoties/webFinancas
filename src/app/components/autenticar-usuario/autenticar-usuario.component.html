@@ -6,6 +6,11 @@
                     <h3>Autenticação de usuários</h3>
                     <p>Entre com as suas credenciais de acesso.</p>
                 </div>
+
+                <div class="text-center text-danger">
+                    <strong>{{mensagem}}</strong>
+                </div>
+
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="mb-3">
                         <label>Email de acesso:</label>
