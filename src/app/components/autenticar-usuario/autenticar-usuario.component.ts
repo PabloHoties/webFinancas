@@ -18,10 +18,12 @@ export class AutenticarUsuarioComponent {
 
   //variáveis do componente
   mensagem: string = '';
+
   //construtor para injeção de dependência
   constructor(
     private httpClient: HttpClient
   ) { }
+
   //criando a estrutura do formulário
   form = new FormGroup({
     /* campo 'email' */
@@ -35,6 +37,7 @@ export class AutenticarUsuarioComponent {
   get f() {
     return this.form.controls;
   }
+  
   //função para capturar o evento de submit do formulário
   onSubmit() {
     //fazendo a requisição para a API (autenticação do usuário)
@@ -43,7 +46,10 @@ export class AutenticarUsuarioComponent {
       .subscribe({ //aguardando o retorno da API
         next: (data: any) => {
           //capturando a resposta de sucesso obtido da API
-          console.log(data);
+          //gravar os dados obtidos na local storage do navegador
+          localStorage.setItem('auth', JSON.stringify(data));
+          //redirecionar para a página de consulta de finanças
+          location.href = '/pages/consultar-contas';
         },
         error: (e) => { //capturando a resposta de erro obtido da API
           //imprimindo mensagem de acesso negado
