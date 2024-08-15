@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">Autenticar Usuário</a>
+          <a class="nav-link text-white" routerLink="/pages/autenticar-usuario">Autenticar Usuário</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">Criar Usuário</a>
+          <a class="nav-link text-white" routerLink="/pages/criar-usuario">Criar Usuário</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="financasDropdown" role="button"
@@ -19,13 +19,16 @@
             Finanças
           </a>
           <ul class="dropdown-menu" aria-labelledby="financasDropdown">
-            <li><a class="dropdown-item" href="#">
-                Cadastrar Finanças</a></li>
-            <li><a class="dropdown-item" href="#">
-                Consultar Finanças</a></li>
+            <li><a class="dropdown-item" routerLink="/pages/cadastrar-contas">Cadastrar Finanças
+              </a></li>
+            <li><a class="dropdown-item" routerLink="/pages/consultar-contas">Consultar Finanças</a></li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="mb-4">
+  <!-- local para renderizar cada componente -->
+  <router-outlet />
+</div>
