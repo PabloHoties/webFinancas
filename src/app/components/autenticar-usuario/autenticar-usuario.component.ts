@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-autenticar-usuario',
@@ -41,7 +42,7 @@ export class AutenticarUsuarioComponent {
   //função para capturar o evento de submit do formulário
   onSubmit() {
     //fazendo a requisição para a API (autenticação do usuário)
-    this.httpClient.post('http://localhost:8082/api/usuarios/autenticar',
+    this.httpClient.post(environment.apiUsuarios + '/api/usuarios/autenticar',
       this.form.value)
       .subscribe({ //aguardando o retorno da API
         next: (data: any) => {
