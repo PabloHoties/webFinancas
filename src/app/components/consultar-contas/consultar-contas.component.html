@@ -7,6 +7,9 @@
             <p>Listagem de contas a pagar e a receber.</p>
         </div>
 
+        <div *ngIf="mensagem" class="alert alert-primary">
+            <strong>{{mensagem}}</strong>
+        </div>
 
         <div class="table-responsive">
             <table class="table table-sm">
@@ -21,22 +24,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let c of contas">
+                        <td>{{ c.nome | uppercase }}</td>
+                        <td>{{ c.data | date : 'dd/MM/yyyy' }}</td>
+                        <td>{{ c.preco | currency : 'R$ ' }}</td>
+                        <td>{{ c.tipo }}</td>
+                        <td>{{ c.categoria.nome | uppercase }}</td>
                         <td>
-                            <button class="btn btn-sm btn-primary me-2">Editar</button>
-                            <button class="btn btn-sm btn-danger">Excluir</button>
+                            <button class="btn btn-sm btn-outline-primary me-2" [routerLink]="['/pages/editar-contas', c.id]">Editar</button>
+                            <button class="btn btn-sm btn-outline-danger" (click)="onDelete(c.id)">Excluir</button>
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="6">
-                            Quantidade de registros: 0
+                            Quantidade de registros: {{ contas.length }}
                         </td>
                     </tr>
                 </tfoot>
